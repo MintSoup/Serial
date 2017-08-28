@@ -1,4 +1,5 @@
 /**
+ * Copyright (C) 2017 Areg Hovhannisyan
  * This file is part of MintSoup's Serial Communicator.
  *
  *     MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
@@ -14,6 +15,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package me.mintsoup.serial;
 
 import jssc.SerialPort;

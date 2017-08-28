@@ -26,4 +26,6 @@ jar {
     baseName="MintSoup's Serial Communicator"
     version="0.1"
 }
-license { header = new File("GPL") }
+license { header = new File("GPL")
+    ext.year = "2017"
+    ext.name = 'Areg Hovhannisyan'}
