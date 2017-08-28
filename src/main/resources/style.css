@@ -1,0 +1,74 @@
+/**
+ * This file is part of MintSoup's Serial Communicator.
+ *
+ *     MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     MintSoup's Serial Communicator is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.normal{
+-fx-background-color:#444444;
+-fx-background-radius:0px;
+-fx-text-fill: #2FD0E4;
+}
+.textfield{
+-fx-background-color:#444444;
+-fx-background-radius:0px;
+-fx-text-fill: #2FD0E4;
+}
+.normal:pressed{
+-fx-background-color:#383838;
+
+}
+.textarea{
+-fx-background-color:#444444;
+-fx-background-radius:0px;
+-fx-border-radius:0px;
+-fx-text-fill: #2FD0E4;
+}
+.textarea .content{
+-fx-background-color:#444444;
+-fx-background-radius:0px;
+-fx-border-radius:0px;
+-fx-text-fill: #7759FF;
+}
+.textarea .scroll-bar:horizontal,
+.textarea .scroll-bar:vertical{
+-fx-background-color:#444444;
+-fx-background-radius:0px;
+-fx-border-radius:0px;
+}
+
+.textarea .scroll-bar,
+.textarea .scroll-bar{
+-fx-background-color:#444444;
+-fx-background-radius:0px;
+}
+
+.textarea .scroll-bar:horizontal .thumb,
+.textarea .scroll-bar:vertical .thumb{
+-fx-background-color:#383838;
+-fx-background-radius:50px;
+}
+
+.textarea .scroll-bar:horizontal .thumb:pressed,
+.textarea .scroll-bar:vertical .thumb:pressed{
+-fx-background-color:#2F2F2F;
+}
+.textarea .increment-button:hover,
+.textarea .decrement-button:hover{
+-fx-background-color:transparent;
+}
+
+
+.corner{
+-fx-background-color: #444444;
+}

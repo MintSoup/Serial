@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #626262;" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.Controller">
+   <center>
+      <TextArea fx:id="area" prefHeight="455.0" prefWidth="517.0" styleClass="textarea" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
+   </center>
+   <right>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="465.0" prefWidth="153.0" spacing="8.0">
+               <children>
+                  <TextField fx:id="qs0" styleClass="textfield" />
+                  <TextField fx:id="qs1" styleClass="textfield" />
+                  <TextField fx:id="qs2" styleClass="textfield" />
+                  <TextField fx:id="qs3" styleClass="textfield" />
+                  <TextField fx:id="qs4" styleClass="textfield" />
+                  <TextField fx:id="qs5" styleClass="textfield" />
+                  <TextField fx:id="qs6" styleClass="textfield" />
+                  <TextField fx:id="qs7" styleClass="textfield" />
+                  <TextField fx:id="qs8" styleClass="textfield" />
+                  <TextField fx:id="qs9" styleClass="textfield" />
+                  <TextField fx:id="qs10" styleClass="textfield" />
+                  <TextField fx:id="qs11" styleClass="textfield" />
+                  <TextField fx:id="qs12" styleClass="textfield" />
+                  <TextField fx:id="qs13" styleClass="textfield" />
+                  <TextField fx:id="qs14" styleClass="textfield" />
+                  <TextField fx:id="qs15" styleClass="textfield" />
+                  <TextField fx:id="qs16" styleClass="textfield" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="553.0" prefWidth="44.0" spacing="8.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#s0" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s1" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s2" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s3" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s4" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s5" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s6" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s7" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s8" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s9" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s10" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s11" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s12" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s13" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s14" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s15" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s16" styleClass="normal" text="Send" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </right>
+   <bottom>
+      <HBox spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="input" onAction="#sendMain" prefHeight="25.0" prefWidth="535.0" styleClass="textfield" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#sendMain" styleClass="normal" text="Send" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>
