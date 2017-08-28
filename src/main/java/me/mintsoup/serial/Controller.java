@@ -1,4 +1,5 @@
 /**
+ * Copyright (C) 2017 MintSoup
  * This file is part of MintSoup's Serial Communicator.
  *
  *     MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
