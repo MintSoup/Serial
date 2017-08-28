@@ -18,6 +18,13 @@
 package me.mintsoup.serial;
 
 public class CommandParser {
+    public static final String[] help = {
+            "*saveQS to force save quicksends",
+            "*reloadQS to reload quicksends",
+            "*reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
+            "*clearQS to clear the text in all quicksend textfields"};
+
+
     public static String parse(String text){
         if(text.equals("saveQS")) {
             FileHandler.saveQuicksends();
@@ -35,6 +42,13 @@ public class CommandParser {
         else if (text.equals("clearQS")) {
             FileHandler.controller.clearQS();
             return "[CommandParser] Cleared Quicksends\n";
+        }
+        else if (text.equals("help")){
+            String g = "";
+            for (String line: help) {
+                g+=line+"\n";
+            }
+            return g;
         }
         else return "[CommandParser] Invalid Command\n";
     }
