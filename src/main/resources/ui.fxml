@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 Copyright (C) 2017 Areg Hovhannisyan
  * This file is part of MintSoup's Serial Communicator.
@@ -15,8 +16,6 @@ Copyright (C) 2017 Areg Hovhannisyan
  *     You should have received a copy of the GNU General Public License
  *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
 !-->
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
@@ -28,7 +27,7 @@ Copyright (C) 2017 Areg Hovhannisyan
 
 <BorderPane style="-fx-background-color: #626262;" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.Controller">
    <center>
-      <TextArea fx:id="area" prefHeight="455.0" prefWidth="517.0" styleClass="textarea" BorderPane.alignment="CENTER">
+      <TextArea fx:id="area" prefHeight="455.0" editable="false" prefWidth="517.0" styleClass="textarea" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
