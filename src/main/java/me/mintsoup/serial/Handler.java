@@ -15,7 +15,6 @@
  *     You should have received a copy of the GNU General Public License
  *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package me.mintsoup.serial;
 
 import jssc.SerialPort;
