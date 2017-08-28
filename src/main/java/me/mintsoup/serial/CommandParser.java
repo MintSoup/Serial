@@ -44,7 +44,7 @@ public class CommandParser {
             return "[CommandParser] Cleared Quicksends\n";
         }
         else if (text.equals("help")){
-            String g = "";
+            String g = "[CommandParser]\n";
             for (String line: help) {
                 g+=line+"\n";
             }
