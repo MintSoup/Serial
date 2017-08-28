@@ -97,63 +97,48 @@ public class Controller {
     public void s0 () {
         execute(qs0.getText());
     }
-
     public void s1() {
         execute(qs1.getText());
     }
-
     public void s2() {
         execute(qs2.getText());
     }
-
     public void s3() {
         execute(qs3.getText());
     }
-
     public void s4() {
         execute(qs4.getText());
     }
-
     public void s5() {
         execute(qs5.getText());
     }
-
     public void s6() {
         execute(qs6.getText());
     }
-
     public void s7() {
         execute(qs7.getText());
     }
-
     public void s8() {
         execute(qs8.getText());
     }
-
     public void s9() {
         execute(qs9.getText());
     }
-
     public void s10() {
         execute(qs10.getText());
     }
-
     public void s11() {
         execute(qs11.getText());
     }
-
     public void s12() {
         execute(qs12.getText());
     }
-
     public void s13() {
         execute(qs13.getText());
     }
-
     public void s14() {
         execute(qs14.getText());
     }
-
     public void s15() {
         execute(qs15.getText());
     }
