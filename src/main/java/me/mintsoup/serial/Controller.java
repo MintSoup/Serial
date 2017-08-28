@@ -65,10 +65,16 @@ public class Controller {
 
     public void execute(String text){
         if(text.isEmpty()) return;
-        area.appendText(text + "\n");
         if(text.startsWith("*")){
             area.appendText(CommandParser.parse(text.substring(1,text.length())));
+            return;
         }
+        if(text.startsWith("\\")){
+            area.appendText(text.substring(1)+'\n');
+            return;
+        }
+        area.appendText(text + "\n");
+
     }
     public void clearQS(){
         Class s = getClass();

@@ -1,5 +1,6 @@
-/**
- * Copyright (C) 2017 MintSoup
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 MintSoup
  * This file is part of MintSoup's Serial Communicator.
  *
  *     MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
@@ -14,15 +15,16 @@
  *
  *     You should have received a copy of the GNU General Public License
  *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
- */
-package me.mintsoup.serial;
+!-->
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-import jssc.SerialPort;
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="me.mintsoup.serial.Controller"
+            prefHeight="400.0" prefWidth="600.0">
 
-public class Handler {
-    public static SerialPort port;
-
-    public void send(){
-
-    }
-}
+</AnchorPane>

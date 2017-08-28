@@ -22,13 +22,15 @@ public class CommandParser {
             "*saveQS to force save quicksends",
             "*reloadQS to reload quicksends",
             "*reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
-            "*clearQS to clear the text in all quicksend textfields"};
+            "*clearQS to clear the text in all quicksend textfields",
+            "To send a string starting with '8', use '\\' before the string"};
 
 
     public static String parse(String text){
         if(text.equals("saveQS")) {
             FileHandler.saveQuicksends();
             return "[CommandParser] Saved Quicksends\n";
+
         }
         else if (text.equals("reloadQS")){
             FileHandler.loadQuicksends();
