@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class FileHandler {
-    public static Controller controller;
+
 
     public static void saveQuicksends() {
         try {
@@ -40,7 +40,7 @@ public class FileHandler {
             for (int i = 0; i < 17; i++) {
                 Field f = controllerClass.getDeclaredField("qs" + i);
                 f.setAccessible(true);
-                TextField tf = (TextField) f.get(controller);
+                TextField tf = (TextField) f.get(Handler.controller);
                 qs.add(tf.getText());
             }
             Gson g = new Gson();
@@ -75,7 +75,7 @@ public class FileHandler {
             for (int i = 0; i < 17; i++) {
                 Field f = controllerClass.getDeclaredField("qs" + i);
                 f.setAccessible(true);
-                TextField tf = (TextField) f.get(controller);
+                TextField tf = (TextField) f.get(Handler.controller);
                 tf.setText(qs.get(i));
             }
 

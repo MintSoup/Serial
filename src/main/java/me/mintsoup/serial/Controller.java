@@ -18,8 +18,10 @@
 package me.mintsoup.serial;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import jssc.SerialPort;
 
 import java.lang.reflect.Field;
 
@@ -62,11 +64,25 @@ public class Controller {
     TextField qs15;
     @FXML
     TextField qs16;
+    @FXML
+    ChoiceBox<Integer> baud;
+    @FXML
+    ChoiceBox<Integer> data;
+    @FXML
+    ChoiceBox<Double> stop;
+    @FXML
+    ChoiceBox<String> parity;
 
+    public void backToMain(){
+        Handler.stage.setScene(Handler.mainScene);
+        Handler.stage.setMinHeight(640);
+        Handler.stage.setHeight(640);
+    }
     public void execute(String text){
         if(text.isEmpty()) return;
         if(text.startsWith("*")){
-            area.appendText(CommandParser.parse(text.substring(1,text.length())));
+            if(!text.equals("*config"))area.appendText(CommandParser.parse(text.substring(1,text.length())));
+            else CommandParser.parse(text.substring(1,text.length()));
             return;
         }
         if(text.startsWith("\\")){
@@ -95,6 +111,7 @@ public class Controller {
     public void sendMain() {
         execute(input.getText());
         input.clear();
+
     }
     public void appendText(String text){
         area.appendText(text);

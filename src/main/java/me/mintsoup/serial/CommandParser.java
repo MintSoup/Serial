@@ -17,6 +17,12 @@
  */
 package me.mintsoup.serial;
 
+import jssc.SerialPort;
+import jssc.SerialPortException;
+import jssc.SerialPortList;
+
+import java.lang.invoke.SerializedLambda;
+
 public class CommandParser {
     public static final String[] help = {
             "*saveQS to force save quicksends",
@@ -38,11 +44,11 @@ public class CommandParser {
         }
         else if (text.equals("reset")) {
             Files.home.delete();
-            FileHandler.controller.clearQS();
+            Handler.controller.clearQS();
             return "[CommandParser] Reset\n";
         }
         else if (text.equals("clearQS")) {
-            FileHandler.controller.clearQS();
+            Handler.controller.clearQS();
             return "[CommandParser] Cleared Quicksends\n";
         }
         else if (text.equals("help")){
@@ -51,6 +57,19 @@ public class CommandParser {
                 g+=line+"\n";
             }
             return g;
+        }
+        else if (text.equals("listPorts")){
+            String g = "[CommandParser]\n";
+            for(String i:SerialPortList.getPortNames()){
+                g+=i+"\n";
+            }
+            return g;
+        }
+        else if (text.equals("config")){
+            Handler.stage.setScene(Handler.configScene);
+            Handler.stage.setMinHeight(480);
+            Handler.stage.setHeight(480);
+            return null;
         }
         else return "[CommandParser] Invalid Command\n";
     }

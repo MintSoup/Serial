@@ -22,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jssc.SerialPortList;
 
 public class Main extends Application {
 
@@ -33,20 +34,20 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui.fxml"));
-        Parent root = loader.load();
-        FileHandler.controller = loader.getController();
+        FXMLLoader l= new FXMLLoader(getClass().getResource("/ui.fxml"));
+        Parent root = l.load();
+        Parent config =  new FXMLLoader(getClass().getResource("/config.fxml")).load();
+        Handler.controller = l.getController();
         primaryStage.setTitle("Serial");
         primaryStage.setMinHeight(640);
         primaryStage.setMinWidth(720);
-        Scene scene = new Scene(root, 1000, 600);
-        primaryStage.setScene(scene);
-
+        Handler.mainScene = new Scene(root, 1000, 600);
+        Handler.configScene = new Scene(config,650,480);
+        primaryStage.setScene(Handler.mainScene);
         primaryStage.show();
         Files.home.mkdirs();
         if(Files.quicksends.exists()) FileHandler.loadQuicksends();
-
-
+        Handler.stage = primaryStage;
     }
 
 
