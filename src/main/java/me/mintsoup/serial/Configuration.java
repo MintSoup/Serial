@@ -17,20 +17,10 @@
  */
 package me.mintsoup.serial;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import jssc.SerialPort;
-import jssc.SerialPortEvent;
-import jssc.SerialPortException;
+public class Configuration {
+    public int baud;
+    public int data;
+    public int stop;
+    public int parity;
 
-public class Handler {
-    public static SerialPort port;
-    public static Configuration config;
-    public static Stage stage;
-    public static Parent root;
-    public static Scene mainScene;
-    public static Scene configScene;
-    public static Controller controller;
 }
