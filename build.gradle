@@ -26,6 +26,10 @@ jar {
     baseName="MintSoup's Serial Communicator"
     version="0.1"
 }
+shadow{
+    archivesBaseName = "MintSoup's Serial Communicator"
+    version="0.1"
+}
 license {
     header = new File("GPL")
 }
