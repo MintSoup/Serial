@@ -33,4 +33,5 @@ public class Handler {
     public static Scene mainScene;
     public static Scene configScene;
     public static Controller controller;
+    public static ConfigController configController;
 }

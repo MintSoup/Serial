@@ -27,74 +27,58 @@ Copyright (C) 2017 Areg Hovhannisyan
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="391.0" prefWidth="510.0" style="-fx-background-color: #626262;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.Controller">
+<BorderPane prefHeight="263.0" prefWidth="368.0" style="-fx-background-color: #626262;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.ConfigController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="251.0" minWidth="200.0" prefHeight="352.0" prefWidth="200.0" spacing="42.0">
+            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="162.0" minWidth="134.0" prefHeight="162.0" prefWidth="134.0" spacing="9.0">
                <children>
                   <Label text="Baudrate">
                      <font>
-                        <Font name="Arial" size="37.0" />
+                        <Font name="Arial" size="25.0" />
                      </font>
                   </Label>
                   <Label text="Data bits">
                      <font>
-                        <Font name="Arial" size="37.0" />
+                        <Font name="Arial" size="25.0" />
                      </font>
                   </Label>
                   <Label text="Stop bits">
                      <font>
-                        <Font name="Arial" size="37.0" />
+                        <Font name="Arial" size="25.0" />
                      </font>
                   </Label>
                   <Label text="Parity Bits">
                      <font>
-                        <Font name="Arial" size="37.0" />
+                        <Font name="Arial" size="25.0" />
                      </font>
                   </Label>
                </children>
                <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
             </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="330.0" minWidth="310.0" prefHeight="330.0" prefWidth="310.0" spacing="48.0" HBox.hgrow="ALWAYS">
+            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="163.0" minWidth="310.0" prefHeight="163.0" prefWidth="376.0" spacing="15.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ChoiceBox fx:id="baud" maxWidth="1.7976931348623157E308" styleClass="normal" VBox.vgrow="SOMETIMES">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="data" maxWidth="1.7976931348623157E308" styleClass="normal" VBox.vgrow="SOMETIMES">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="stop" maxWidth="1.7976931348623157E308" styleClass="normal" VBox.vgrow="SOMETIMES">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="parity" maxWidth="1.7976931348623157E308" styleClass="normal" VBox.vgrow="SOMETIMES">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </ChoiceBox>
+                  <ChoiceBox fx:id="baud" maxWidth="1.7976931348623157E308" styleClass="choicebox" VBox.vgrow="SOMETIMES" />
+                  <ChoiceBox fx:id="data" maxWidth="1.7976931348623157E308" styleClass="choicebox" VBox.vgrow="SOMETIMES" />
+                  <ChoiceBox fx:id="stop" maxWidth="1.7976931348623157E308" styleClass="choicebox" VBox.vgrow="SOMETIMES" />
+                  <ChoiceBox fx:id="parity" maxWidth="1.7976931348623157E308" styleClass="choicebox" VBox.vgrow="SOMETIMES" />
                </children>
                <padding>
-                  <Insets bottom="25.0" left="10.0" right="25.0" top="25.0" />
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
             </VBox>
          </children>
       </HBox>
    </top>
    <bottom>
-      <HBox maxHeight="1.7976931348623157E308" prefHeight="100.0" BorderPane.alignment="CENTER">
+      <HBox maxHeight="1.7976931348623157E308" prefHeight="68.0" prefWidth="444.0" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backToMain" styleClass="normal" text="OK" HBox.hgrow="ALWAYS">
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backToMain" styleClass="normal" text="OK" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Arial" size="41.0" />
                </font>
