@@ -36,7 +36,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader l= new FXMLLoader(getClass().getResource("/ui.fxml"));
         Parent root = l.load();
-        Parent config =  new FXMLLoader(getClass().getResource("/config.fxml")).load();
+        FXMLLoader l2=new FXMLLoader(getClass().getResource("/config.fxml"));
+        Parent config = l2.load();
+        Handler.configController = l2.getController();
         Handler.controller = l.getController();
         primaryStage.setTitle("Serial");
         primaryStage.setMinHeight(640);

@@ -29,7 +29,8 @@ public class CommandParser {
             "*reloadQS to reload quicksends",
             "*reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
             "*clearQS to clear the text in all quicksend textfields",
-            "To send a string starting with '8', use '\\' before the string"};
+            "*config to open configuration menu",
+            "To send a string starting with '*', use '\\' before the string",};
 
 
     public static String parse(String text){
@@ -67,8 +68,9 @@ public class CommandParser {
         }
         else if (text.equals("config")){
             Handler.stage.setScene(Handler.configScene);
-            Handler.stage.setMinHeight(480);
-            Handler.stage.setHeight(480);
+            Handler.stage.setMinHeight(300);
+            Handler.stage.setHeight(300);
+            Handler.configController.populateChoiceBoxes();
             return null;
         }
         else return "[CommandParser] Invalid Command\n";
