@@ -20,7 +20,10 @@ package me.mintsoup.serial;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 import jssc.SerialPortList;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
+import java.io.IOException;
 import java.lang.invoke.SerializedLambda;
 
 public class CommandParser {
@@ -44,7 +47,11 @@ public class CommandParser {
             return "[CommandParser] Quicksends Reloaded\n";
         }
         else if (text.equals("reset")) {
-            Files.home.delete();
+            try {
+                FileUtils.deleteDirectory(Files.home);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             Handler.controller.clearQS();
             return "[CommandParser] Reset\n";
         }
@@ -69,7 +76,9 @@ public class CommandParser {
         else if (text.equals("config")){
             Handler.stage.setScene(Handler.configScene);
             Handler.stage.setMinHeight(300);
+            Handler.stage.setMinWidth(400);
             Handler.stage.setHeight(300);
+            Handler.stage.setWidth(400);
             Handler.configController.populateChoiceBoxes();
             return null;
         }

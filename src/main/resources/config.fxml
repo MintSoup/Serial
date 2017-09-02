@@ -31,7 +31,7 @@ Copyright (C) 2017 MintSoup
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="162.0" minWidth="134.0" prefHeight="162.0" prefWidth="134.0" spacing="9.0">
+            <VBox minWidth="135.0" prefHeight="163.0" prefWidth="144.0" spacing="9.0">
                <children>
                   <Label text="Baudrate">
                      <font>
@@ -58,7 +58,7 @@ Copyright (C) 2017 MintSoup
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
             </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="163.0" minWidth="310.0" prefHeight="163.0" prefWidth="376.0" spacing="15.0" HBox.hgrow="ALWAYS">
+            <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="163.0" prefWidth="188.0" spacing="15.0" HBox.hgrow="ALWAYS">
                <padding>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>

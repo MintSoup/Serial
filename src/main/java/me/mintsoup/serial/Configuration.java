@@ -17,10 +17,16 @@
  */
 package me.mintsoup.serial;
 
-public class Configuration {
-    public int baud;
-    public int data;
-    public int stop;
-    public int parity;
+import java.text.MessageFormat;
 
+public class Configuration {
+    public int baud = 9600;
+    public int data = 8;
+    public int stop = 3;
+    public int parity = 0;
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("{0} {1} {2} {3}", baud, data, stop, parity);
+    }
 }

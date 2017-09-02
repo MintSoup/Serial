@@ -22,4 +22,5 @@ import java.io.File;
 public class Files {
     public static File home = new File(System.getProperty("user.home")+"/.serial/");
     public static File quicksends = new File(home,"quicksends.json");
+    public static File config = new File(home,"config.json");
 }
