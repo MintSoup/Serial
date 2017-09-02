@@ -18,19 +18,19 @@
 package me.mintsoup.serial;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonWriter;
 import javafx.scene.control.TextField;
+import jssc.SerialPort;
+import sun.security.krb5.Config;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class FileHandler {
-
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static void saveQuicksends() {
         try {
@@ -43,13 +43,10 @@ public class FileHandler {
                 TextField tf = (TextField) f.get(Handler.controller);
                 qs.add(tf.getText());
             }
-            Gson g = new Gson();
-            FileWriter quicksends = new FileWriter(Files.quicksends);
-            JsonWriter jsonWriter = new JsonWriter(quicksends);
-            g.toJson(qs, new TypeToken<ArrayList<String>>() {
-            }.getType(), jsonWriter);
-            jsonWriter.close();
-            quicksends.close();
+
+            BufferedWriter g = new BufferedWriter(new FileWriter(Files.quicksends));
+            gson.toJson(qs,g);
+            g.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchFieldException e) {
@@ -65,9 +62,8 @@ public class FileHandler {
     public static void loadQuicksends() {
         try {
 
-            Gson g = new Gson();
             FileReader quicksends = new FileReader(Files.quicksends);
-            ArrayList<String> qs = g.fromJson(quicksends, new TypeToken<ArrayList<String>>() {
+            ArrayList<String> qs = gson.fromJson(quicksends, new TypeToken<ArrayList<String>>() {
             }.getType());
             quicksends.close();
             Class controllerClass = Class.forName("me.mintsoup.serial.Controller");
@@ -91,5 +87,26 @@ public class FileHandler {
             e.printStackTrace();
         }
 
+    }
+
+    public static void loadConfig() {
+        try{
+            FileReader f = new FileReader(Files.config);
+            Handler.config = gson.fromJson(f,Configuration.class);
+            f.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void saveConfig(){
+        try{
+
+            BufferedWriter g = new BufferedWriter(new FileWriter(Files.config));
+            gson.toJson(Handler.config,g);
+            g.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -28,6 +28,7 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
+        Files.home.mkdirs();
         FileHandler.saveQuicksends();
         super.stop();
     }
@@ -44,10 +45,11 @@ public class Main extends Application {
         primaryStage.setMinHeight(640);
         primaryStage.setMinWidth(720);
         Handler.mainScene = new Scene(root, 1000, 600);
-        Handler.configScene = new Scene(config,650,480);
+        Handler.configScene = new Scene(config,400,620);
         primaryStage.setScene(Handler.mainScene);
         primaryStage.show();
         Files.home.mkdirs();
+        Handler.config = new Configuration();
         if(Files.quicksends.exists()) FileHandler.loadQuicksends();
         Handler.stage = primaryStage;
     }
