@@ -24,6 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.SingleSelectionModel;
 import jssc.SerialPort;
 
@@ -35,13 +36,13 @@ import java.util.ListIterator;
 
 public class ConfigController {
     @FXML
-    ChoiceBox<Integer> baud;
+    ComboBox<Integer> baud;
     @FXML
-    ChoiceBox<Integer> data;
+    ComboBox<Integer> data;
     @FXML
-    ChoiceBox<Double> stop;
+    ComboBox<Double> stop;
     @FXML
-    ChoiceBox<String> parity;
+    ComboBox<String> parity;
 
     public void populateChoiceBoxes() {
         Class s = SerialPort.class;
