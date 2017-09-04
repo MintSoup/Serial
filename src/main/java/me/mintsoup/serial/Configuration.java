@@ -24,9 +24,12 @@ public class Configuration {
     public int data = 8;
     public int stop = 3;
     public int parity = 0;
+    public String port = "COM1";
+    public String newLine;
+
 
     @Override
     public String toString() {
-        return MessageFormat.format("{0} {1} {2} {3}", baud, data, stop, parity);
+        return MessageFormat.format("{0} {1} {2} {3} {4}", baud, data, stop, parity);
     }
 }
