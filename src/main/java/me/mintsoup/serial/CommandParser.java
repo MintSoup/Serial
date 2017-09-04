@@ -33,6 +33,8 @@ public class CommandParser {
             "*reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
             "*clearQS to clear the text in all quicksend textfields",
             "*config to open configuration menu",
+            "*newline to clear the newline string OR *newline <newline> to change it",
+            "*getnl to get the newline string",
             "To send a string starting with '*', use '\\' before the string",};
 
 
@@ -71,13 +73,42 @@ public class CommandParser {
             for(String i:SerialPortList.getPortNames()){
                 g+=i+"\n";
             }
+            if(g.endsWith("]\n"))
+                g="[CommandParser] No ports found";
             return g;
+        }
+        else if (text.startsWith("newline")){
+            if(text.equals("newline")) {
+                Handler.config.newLine = "";
+                return "[CommandParser] Cleared newline\n";
+            }
+            else if (text.split(" ").length == 2){
+                Handler.config.newLine = text.split(" ")[1];
+                return "[CommandParser] Set newline to " + Handler.config.newLine + "\n";
+            }
+            else {
+                return "[CommandParser] Wrong syntax, use *help\n";
+            }
+        }
+        else if (text.equals("getnl")){
+            return "[CommandParser] Newline character is " + Handler.config.newLine+"\n";
+        }
+        else if (text.equals("open")){
+            if (Handler.port.isOpened()) return "[CommandParser] Port already opened. Use *close to close it\n";
+            try {
+                Handler.port = new SerialPort(Handler.config.port);
+                Handler.port.openPort();
+                Handler.port.setParams(Handler.config.baud,Handler.config.data,Handler.config.stop,Handler.config.parity);
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            }
+            return "[CommandParser] Port Successfully opened";
         }
         else if (text.equals("config")){
             Handler.stage.setScene(Handler.configScene);
-            Handler.stage.setMinHeight(300);
+            Handler.stage.setMinHeight(340);
             Handler.stage.setMinWidth(400);
-            Handler.stage.setHeight(300);
+            Handler.stage.setHeight(340);
             Handler.stage.setWidth(400);
             Handler.configController.populateChoiceBoxes();
             return null;

@@ -17,6 +17,7 @@
  */
 package me.mintsoup.serial;
 
+import com.google.gson.GsonBuilder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +31,7 @@ public class Main extends Application {
     public void stop() throws Exception {
         Files.home.mkdirs();
         FileHandler.saveQuicksends();
+        FileHandler.saveConfig();
         super.stop();
     }
 
@@ -51,6 +53,7 @@ public class Main extends Application {
         Files.home.mkdirs();
         Handler.config = new Configuration();
         if(Files.quicksends.exists()) FileHandler.loadQuicksends();
+        if(Files.config.exists()) FileHandler.loadConfig();
         Handler.stage = primaryStage;
     }
 

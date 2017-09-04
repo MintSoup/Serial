@@ -17,23 +17,12 @@
  */
 package me.mintsoup.serial;
 
-import javafx.beans.InvalidationListener;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ModifiableObservableListBase;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.SingleSelectionModel;
 import jssc.SerialPort;
+import jssc.SerialPortList;
 
-import java.io.File;
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class ConfigController {
     @FXML
@@ -44,6 +33,8 @@ public class ConfigController {
     ComboBox<Double> stop;
     @FXML
     ComboBox<String> parity;
+    @FXML
+    ComboBox<String> port;
 
     public void populateChoiceBoxes() {
         if(Files.config.exists()) FileHandler.loadConfig();
@@ -71,10 +62,17 @@ public class ConfigController {
         }
         stop.getItems().addAll(1d,2d,1.5);
         parity.getItems().addAll("None","Odd","Even","Mark","Space");
+        port.getItems().addAll(SerialPortList.getPortNames());
+
         baud.getSelectionModel().select(new Integer(Handler.config.baud));
         data.getSelectionModel().select(new Integer(Handler.config.data));
         stop.getSelectionModel().select(Handler.config.stop-1);
         parity.getSelectionModel().select(Handler.config.parity);
+        for(String i: SerialPortList.getPortNames()){
+            if(i.equals(Handler.config.port)){
+                port.getSelectionModel().select(Handler.config.port);
+            }
+        }
         System.out.println(Handler.config);
 
 
@@ -89,6 +87,7 @@ public class ConfigController {
         Handler.config.data = data.getSelectionModel().getSelectedItem();
         Handler.config.stop = stop.getSelectionModel().getSelectedIndex()+1;
         Handler.config.parity = parity.getSelectionModel().getSelectedIndex();
+        Handler.config.port = port.getSelectionModel().getSelectedItem();
         FileHandler.saveConfig();
     }
 }
