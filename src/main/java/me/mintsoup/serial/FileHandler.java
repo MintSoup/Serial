@@ -93,6 +93,7 @@ public class FileHandler {
         try{
             FileReader f = new FileReader(Files.config);
             Handler.config = gson.fromJson(f,Configuration.class);
+            if(Handler.config.isNewline) Handler.config.newLine = "\n";
             f.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,6 +106,7 @@ public class FileHandler {
             BufferedWriter g = new BufferedWriter(new FileWriter(Files.config));
             gson.toJson(Handler.config,g);
             g.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

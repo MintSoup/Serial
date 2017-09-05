@@ -19,6 +19,7 @@ package me.mintsoup.serial;
 
 import com.google.gson.GsonBuilder;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,13 +27,16 @@ import javafx.stage.Stage;
 import jssc.SerialPortList;
 
 public class Main extends Application {
-
+    //for testing purposes
+    public static boolean save = true;
     @Override
     public void stop() throws Exception {
         Files.home.mkdirs();
-        FileHandler.saveQuicksends();
-        FileHandler.saveConfig();
+        if(save)FileHandler.saveQuicksends();
+        if(save)FileHandler.saveConfig();
         super.stop();
+        Platform.exit();
+        System.exit(0);
     }
 
     @Override
@@ -43,7 +47,7 @@ public class Main extends Application {
         Parent config = l2.load();
         Handler.configController = l2.getController();
         Handler.controller = l.getController();
-        primaryStage.setTitle("Serial");
+        primaryStage.setTitle("Serial" +(save?"":" [TEST MODE]"));
         primaryStage.setMinHeight(640);
         primaryStage.setMinWidth(720);
         Handler.mainScene = new Scene(root, 1000, 600);
@@ -55,6 +59,7 @@ public class Main extends Application {
         if(Files.quicksends.exists()) FileHandler.loadQuicksends();
         if(Files.config.exists()) FileHandler.loadConfig();
         Handler.stage = primaryStage;
+        if(!save) System.err.println("!!!!!!!!!!!!!SAVE MODE IS OFF, THIS VERSION IS IN TEST MODE!!!!!!!");
     }
 
 

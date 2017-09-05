@@ -25,7 +25,8 @@ public class Configuration {
     public int stop = 3;
     public int parity = 0;
     public String port = "COM1";
-    public String newLine;
+    public String newLine = "";
+    public boolean isNewline = false;
 
 
     @Override

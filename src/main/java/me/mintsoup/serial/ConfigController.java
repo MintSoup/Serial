@@ -43,6 +43,7 @@ public class ConfigController {
         data.getItems().clear();
         stop.getItems().clear();
         parity.getItems().clear();
+        port.getItems().clear();
         baud.getSelectionModel().clearSelection();
         data.getSelectionModel().clearSelection();
         stop.getSelectionModel().clearSelection();
@@ -68,12 +69,11 @@ public class ConfigController {
         data.getSelectionModel().select(new Integer(Handler.config.data));
         stop.getSelectionModel().select(Handler.config.stop-1);
         parity.getSelectionModel().select(Handler.config.parity);
-        for(String i: SerialPortList.getPortNames()){
-            if(i.equals(Handler.config.port)){
+        for(String i: SerialPortList.getPortNames()) {
+            if (i.equals(Handler.config.port)) {
                 port.getSelectionModel().select(Handler.config.port);
             }
         }
-        System.out.println(Handler.config);
 
 
     }
@@ -82,12 +82,13 @@ public class ConfigController {
         Handler.stage.setScene(Handler.mainScene);
         Handler.stage.setMinHeight(640);
         Handler.stage.setHeight(640);
-        Handler.stage.setMinWidth(1000);
+        Handler.stage.setMinWidth(720);
+        Handler.stage.setWidth(1000);
         Handler.config.baud = baud.getSelectionModel().getSelectedItem();
         Handler.config.data = data.getSelectionModel().getSelectedItem();
         Handler.config.stop = stop.getSelectionModel().getSelectedIndex()+1;
         Handler.config.parity = parity.getSelectionModel().getSelectedIndex();
         Handler.config.port = port.getSelectionModel().getSelectedItem();
-        FileHandler.saveConfig();
+        if(Main.save)FileHandler.saveConfig();
     }
 }
