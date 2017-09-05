@@ -90,7 +90,7 @@
 -fx-background-radius:0px;
 }
 
-.textarea .scroll-bar .thumb:{
+.textarea .scroll-bar .thumb{
 -fx-background-color:#383838;
 -fx-background-radius:50px;
 }

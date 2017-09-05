@@ -17,12 +17,15 @@
  */
 package me.mintsoup.serial;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 import jssc.SerialPortList;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.invoke.SerializedLambda;
 
@@ -33,9 +36,10 @@ public class CommandParser {
             "*reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
             "*clearQS to clear the text in all quicksend textfields",
             "*config to open configuration menu",
-            "*newline to clear the newline string OR *newline <newline> to change it",
-            "*getnl to get the newline string",
-            "To send a string starting with '*', use '\\' before the string",};
+            "*suffix to clear the suffix string OR *newline <ascii0> <ascii1>,etc to change it. Use *suffix -1 to change the suffix to \\n",
+            "*gets to get the suffix string",
+            "*outfile to choose an output file, all the input will be written in to this file.",
+            "To send a string starting with '*', use '|' before the string",};
 
 
     public static String parse(String text){
@@ -77,32 +81,48 @@ public class CommandParser {
                 g="[CommandParser] No ports found";
             return g;
         }
-        else if (text.startsWith("newline")){
-            if(text.equals("newline")) {
+        else if (text.startsWith("suffix")){
+            if(text.equals("suffix")) {
                 Handler.config.newLine = "";
-                return "[CommandParser] Cleared newline\n";
+                Handler.config.isNewline = false;
+                return "[CommandParser] Cleared the suffix\n";
             }
-            else if (text.split(" ").length == 2){
-                Handler.config.newLine = text.split(" ")[1];
-                return "[CommandParser] Set newline to " + Handler.config.newLine + "\n";
+            else if (text.split(" ").length >1){
+                if(text.split(" ")[1].equals("-1")){
+                    Handler.config.newLine = "\n";
+                    Handler.config.isNewline = true;
+                    return "[CommandParser] Changed the suffix to the newline character\n";
+                }
+                try{
+                    Handler.config.newLine = "";
+                    for(int i=1;i<text.split(" ").length;i++){
+                        Handler.config.newLine+=(char)Integer.parseInt(text.split(" ")[i]);
+                    }
+                    Handler.config.isNewline = false;
+
+                }catch (NumberFormatException e){
+                    return "[CommandParser] Wrong syntax, use *help\n";
+                }
+                return "[CommandParser] Set the suffix to " + Handler.config.newLine + "\n";
             }
             else {
                 return "[CommandParser] Wrong syntax, use *help\n";
             }
         }
-        else if (text.equals("getnl")){
-            return "[CommandParser] Newline character is " + Handler.config.newLine+"\n";
+        else if (text.equals("gets")){
+            return "[CommandParser] The suffix is " + Handler.config.newLine+"\n";
         }
         else if (text.equals("open")){
-            if (Handler.port.isOpened()) return "[CommandParser] Port already opened. Use *close to close it\n";
+            if (Handler.port !=null) return "[CommandParser] Port already opened. Use *close to close it\n";
             try {
                 Handler.port = new SerialPort(Handler.config.port);
                 Handler.port.openPort();
                 Handler.port.setParams(Handler.config.baud,Handler.config.data,Handler.config.stop,Handler.config.parity);
+                Handler.port.addEventListener(Handler.controller);
             } catch (SerialPortException e) {
                 e.printStackTrace();
             }
-            return "[CommandParser] Port Successfully opened";
+            return "[CommandParser] Port Successfully opened on " + Handler.port.getPortName()+"\n";
         }
         else if (text.equals("config")){
             Handler.stage.setScene(Handler.configScene);
@@ -112,6 +132,26 @@ public class CommandParser {
             Handler.stage.setWidth(400);
             Handler.configController.populateChoiceBoxes();
             return null;
+        }
+        else if(text.equals("close")){
+            try {
+                Handler.port.closePort();
+                Handler.port = null;
+                return "[CommandParser] OK";
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e){
+                return "[CommandParser] Port not opened yet\n";
+            }
+            return "???";
+        }
+        else if(text.equals("outfile")){
+            FileChooser fc = new FileChooser();//Dont kill me
+            fc.setTitle("Choose file");
+            fc.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("All files","*.*"));
+            Files.output = fc.showSaveDialog(new Stage());
+            return "";
         }
         else return "[CommandParser] Invalid Command\n";
     }

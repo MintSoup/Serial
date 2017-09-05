@@ -20,11 +20,18 @@ package me.mintsoup.serial;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
+import jssc.SerialPortList;
 
+import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Field;
 
-public class Controller {
+public class Controller implements SerialPortEventListener {
     @FXML
     TextArea area;
     @FXML
@@ -71,14 +78,14 @@ public class Controller {
             else CommandParser.parse(text.substring(1, text.length()));
             return;
         } else if (Handler.port == null || !Handler.port.isOpened()) {
-            area.appendText("Port is not opened yet, use *help to get help on commands.");
+            area.appendText("Port is not opened yet, use *help to get help on commands."+"\n");
             return;
         }
-        String newline = Handler.config.newLine.startsWith("\\") ? Handler.config.newLine.substring(1) : Handler.config.newLine;
-        if (text.startsWith("\\")) {
-            area.appendText(text.substring(1) + newline);
+        String newline = Handler.config.newLine.startsWith("|") ? Handler.config.newLine.substring(1) : Handler.config.newLine;
+        if (text.startsWith("|")) {
             try {
                 Handler.port.writeString(text.substring(1) + newline);
+                area.appendText(text.substring(1)+newline);
             } catch (SerialPortException e) {
                 e.printStackTrace();
             }
@@ -86,10 +93,10 @@ public class Controller {
         }
         try {
             Handler.port.writeString(text + newline);
+            area.appendText(text+newline);
         } catch (SerialPortException e) {
             e.printStackTrace();
         }
-        area.appendText(text + "\n");
 
     }
 
@@ -115,9 +122,6 @@ public class Controller {
 
     }
 
-    public void appendText(String text) {
-        area.appendText(text);
-    }
 
     public void s0() {
         execute(qs0.getText());
@@ -187,4 +191,24 @@ public class Controller {
         execute(qs16.getText());
     }
 
+    @Override
+    public void serialEvent(SerialPortEvent serialPortEvent) {
+        if(serialPortEvent.isRXCHAR() && serialPortEvent.getEventValue()>0){
+            try {
+                if(area==null) return;
+                String e = Handler.port.readString();
+                area.appendText(e);
+                if(Files.output!=null) {
+                    BufferedWriter g = new BufferedWriter(new FileWriter(Files.output,true));
+                    g.write(e);
+                    g.close();
+                }
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            } catch (IOException e){
+                area.appendText("Could not write to file, output in stderr. Submit to dev (github.com/MintSoup/Serial) if you think this is a bug");
+            }
+        }
+
+    }
 }
