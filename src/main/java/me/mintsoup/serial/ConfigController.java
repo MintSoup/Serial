@@ -89,6 +89,6 @@ public class ConfigController {
         Handler.config.stop = stop.getSelectionModel().getSelectedIndex()+1;
         Handler.config.parity = parity.getSelectionModel().getSelectedIndex();
         Handler.config.port = port.getSelectionModel().getSelectedItem();
-        if(Main.save)FileHandler.saveConfig();
+        if(!Main.test)FileHandler.saveConfig();
     }
 }

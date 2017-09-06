@@ -27,7 +27,7 @@ Copyright (C) 2017 Areg Hovhannisyan
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefWidth="400.0" style="-fx-background-color: #626262;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.ConfigController">
+<BorderPane prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.ConfigController">
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>

@@ -1,19 +1,19 @@
 /**
  * Copyright (C) 2017 Areg Hovhannisyan
  * This file is part of MintSoup's Serial Communicator.
- *
- *     MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     MintSoup's Serial Communicator is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * <p>
+ * MintSoup's Serial Communicator is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
  */
 package me.mintsoup.serial;
 
@@ -25,6 +25,8 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
 
+import java.io.File;
+
 public class Handler {
     public static SerialPort port;
     public static Configuration config;
@@ -34,4 +36,30 @@ public class Handler {
     public static Scene configScene;
     public static Controller controller;
     public static ConfigController configController;
+
+    public static int updateTheme() {
+
+        if (config.theme.equals("~")) {
+            clearThemes();
+            mainScene.getStylesheets().add(CommandParser.class.getResource("/style.css").toExternalForm());
+            configScene.getStylesheets().add(CommandParser.class.getResource("/style.css").toExternalForm());
+        } else if (config.theme.equals("MODENA")) {
+            clearThemes();
+            mainScene.getStylesheets().add("MODENA");
+            configScene.getStylesheets().add("MODENA");
+        } else {
+            File css = new File(Files.home, config.theme + ".css");
+            if (!css.exists() || css.isDirectory()) return 1;
+            clearThemes();
+
+            mainScene.getStylesheets().add(css.toURI().toString());
+            configScene.getStylesheets().add(css.toURI().toString());
+        }
+        return 0;
+    }
+
+    private static void clearThemes() {
+        mainScene.getStylesheets().clear();
+        configScene.getStylesheets().clear();
+    }
 }
