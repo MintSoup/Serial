@@ -26,14 +26,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jssc.SerialPortList;
 
+import java.io.File;
+
 public class Main extends Application {
     //for testing purposes
-    public static boolean save = true;
+    public static boolean test = false;
     @Override
     public void stop() throws Exception {
         Files.home.mkdirs();
-        if(save)FileHandler.saveQuicksends();
-        if(save)FileHandler.saveConfig();
+        if(!test)FileHandler.saveQuicksends();
+        if(!test)FileHandler.saveConfig();
         super.stop();
         Platform.exit();
         System.exit(0);
@@ -47,7 +49,7 @@ public class Main extends Application {
         Parent config = l2.load();
         Handler.configController = l2.getController();
         Handler.controller = l.getController();
-        primaryStage.setTitle("Serial" +(save?"":" [TEST MODE]"));
+        primaryStage.setTitle("Serial" +(!test?"":" [TEST MODE]"));
         primaryStage.setMinHeight(640);
         primaryStage.setMinWidth(720);
         Handler.mainScene = new Scene(root, 1000, 600);
@@ -59,7 +61,12 @@ public class Main extends Application {
         if(Files.quicksends.exists()) FileHandler.loadQuicksends();
         if(Files.config.exists()) FileHandler.loadConfig();
         Handler.stage = primaryStage;
-        if(!save) System.err.println("!!!!!!!!!!!!!SAVE MODE IS OFF, THIS VERSION IS IN TEST MODE!!!!!!!");
+        if(Handler.updateTheme() != 0) {
+            System.err.print("Could not find the stylesheet, using the default theme");
+            Handler.config.theme="~";
+            Handler.updateTheme();
+        }
+        if(test) System.err.println("!!!!!!!!!!TEST MODE IS ON!!!!!!!!!!");
     }
 
 

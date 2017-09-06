@@ -27,7 +27,7 @@ Copyright (C) 2017 MintSoup
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="584.0" prefWidth="744.0" style="-fx-background-color: #626262;" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.Controller">
+<BorderPane prefHeight="584.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mintsoup.serial.Controller">
    <center>
       <TextArea fx:id="area" editable="false" prefHeight="455.0" prefWidth="517.0" styleClass="textarea" BorderPane.alignment="CENTER">
          <BorderPane.margin>

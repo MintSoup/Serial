@@ -26,6 +26,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.invoke.SerializedLambda;
 
@@ -39,6 +40,7 @@ public class CommandParser {
             "*suffix to clear the suffix string OR *newline <ascii0> <ascii1>,etc to change it. Use *suffix -1 to change the suffix to \\n",
             "*gets to get the suffix string",
             "*outfile to choose an output file, all the input will be written in to this file.",
+            "*theme <themeFile> to choose a theme. Theme files are located in ~/.mintsoup/serial/. All theme files should have a css format, example included\nUse *theme ~ to use the default theme",
             "To send a string starting with '*', use '|' before the string",};
 
 
@@ -142,16 +144,34 @@ public class CommandParser {
                 e.printStackTrace();
             } catch (NullPointerException e){
                 return "[CommandParser] Port not opened yet\n";
-            }
-            return "???";
+            } return "Could not close the port, probably busy :(";
+
         }
         else if(text.equals("outfile")){
-            FileChooser fc = new FileChooser();//Dont kill me
+            FileChooser fc = new FileChooser();
             fc.setTitle("Choose file");
             fc.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("All files","*.*"));
-            Files.output = fc.showSaveDialog(new Stage());
+            Files.output = fc.showSaveDialog(new Stage());//Dont kill me
+            FileWriter pw = null;
+            if(Files.output.exists()){
+
+                try {
+                    pw = new FileWriter(Files.output);
+                    pw.close();
+                } catch (IOException e) {
+                    System.err.println("Could not write to file, output in stderr. Submit to dev (github.com/MintSoup/Serial) if you think this is a bug");
+
+                }
+            }
             return "";
+        }
+        else if(text.startsWith("theme")){
+            String[] data = text.split(" ");
+            if(data.length==1)return "[CommandParser] Invalid Syntax. Use *help\n";
+            Handler.config.theme = data[1];
+            if(Handler.updateTheme() != 0) return "[CommandParser] Could not find that theme\n";
+            return "[CommandParser] Set the theme to " + data[1]+'\n';
         }
         else return "[CommandParser] Invalid Command\n";
     }
