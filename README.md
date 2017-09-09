@@ -36,7 +36,13 @@ Anything you type in here will be sent over the serial port when you press the s
 So now you kinda now how to use this program, but not really. I mean you can't even open a connection. Which brings us to 
 
 # Commands
-<p> Commands are special strings that you type into the input field and send. Commands are used to configure the program or open/close ports, etc. Try typing -help in the input field and send it. You should be greeted by a text in your output field which contains a lot of useful information about commands. Most commands are self explanatory, but I will explain a few of them, just in case.
+<p> Commands are special strings that you type into the input field and send. Commands are used to configure the program or open/close ports, etc. Try typing -help in the input field and send it. You should be greeted by a text in your output field which contains a lot of useful information about commands. Most commands are self explanatory, but I will explain a few of them, just in case. (Protip: Put common commands (-config, -open, -close,etc) in the quicksends so you don't have to type them out every time you want to use them.)</p>
  
  <h4>-config</h4>
- If you type -config in the input field and press enter, you will be greeted by the configuration screen, where you can select all your serial settings (baudrate, data bits, etc). Once you're done configuring these, click the <h5>GIGANTIC</h5> OK button. If you can't find it you need to consult a doctor.
+ If you type -config in the input field and press enter, you will be greeted by the configuration screen, where you can select all your serial settings (baudrate, data bits, etc). Once you're done configuring these, click the HUGE OK button. If you can't find it you need to consult a doctor.
+ 
+ <h4>-outfile</h4>
+ Running this command will open up a file chooser menu. Once you select your file, all the input from the serial port will be displayed on the output text area as well as be written to this file.
+ 
+<h4>-suffix</h4>
+This is used to configure a string which will be sent after you text every time you send something. use -suffix to clear 
