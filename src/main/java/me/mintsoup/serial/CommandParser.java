@@ -1,19 +1,19 @@
 /**
  * Copyright (C) 2017 MintSoup
  * This file is part of MintSoup's Serial Communicator.
- *
- *     MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     MintSoup's Serial Communicator is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * MintSoup's Serial Communicator is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * <p>
+ * MintSoup's Serial Communicator is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
  */
 package me.mintsoup.serial;
 
@@ -31,30 +31,29 @@ import java.io.IOException;
 import java.lang.invoke.SerializedLambda;
 
 public class CommandParser {
+    public static final char cmd = '-';
     public static final String[] help = {
-            "*saveQS to force save quicksends",
-            "*reloadQS to reload quicksends",
-            "*reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
-            "*clearQS to clear the text in all quicksend textfields",
-            "*config to open configuration menu",
-            "*suffix to clear the suffix string OR *newline <ascii0> <ascii1>,etc to change it. Use *suffix -1 to change the suffix to \\n",
-            "*gets to get the suffix string",
-            "*outfile to choose an output file, all the input will be written in to this file.",
-            "*theme <themeFile> to choose a theme. Theme files are located in ~/.mintsoup/serial/. All theme files should have a css format, example included\nUse *theme ~ to use the default theme",
-            "To send a string starting with '*', use '|' before the string",};
+            "saveQS to force save quicksends",
+            "reloadQS to reload quicksends",
+            "reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
+            "clearQS to clear the text in all quicksend textfields",
+            "config to open configuration menu",
+            "suffix to clear the suffix string OR " + cmd + "suffix <ascii0> <ascii1>,etc to change it. Use" + cmd + "suffix -1 to change the suffix to \\n",
+            "gets to get the suffix string",
+            "outfile to choose an output file, all the input will be written in to this file.",
+            "theme <themeFile> to choose a theme. Theme files are located in ~/.mintsoup/serial/. All theme files should have a css format, example included\nUse " + cmd + "theme ~ to use the default theme",
+            "To send a string starting with " + cmd + ", use '|' before the string",};
 
 
-    public static String parse(String text){
-        if(text.equals("saveQS")) {
+    public static String parse(String text) {
+        if (text.equals("saveQS")) {
             FileHandler.saveQuicksends();
             return "[CommandParser] Saved Quicksends\n";
 
-        }
-        else if (text.equals("reloadQS")){
+        } else if (text.equals("reloadQS")) {
             FileHandler.loadQuicksends();
             return "[CommandParser] Quicksends Reloaded\n";
-        }
-        else if (text.equals("reset")) {
+        } else if (text.equals("reset")) {
             try {
                 FileUtils.deleteDirectory(Files.home);
             } catch (IOException e) {
@@ -62,71 +61,62 @@ public class CommandParser {
             }
             Handler.controller.clearQS();
             return "[CommandParser] Reset\n";
-        }
-        else if (text.equals("clearQS")) {
+        } else if (text.equals("clearQS")) {
             Handler.controller.clearQS();
             return "[CommandParser] Cleared Quicksends\n";
-        }
-        else if (text.equals("help")){
+        } else if (text.equals("help")) {
             String g = "[CommandParser]\n";
-            for (String line: help) {
-                g+=line+"\n";
+            for (String line : help) {
+                g += cmd + line + "\n";
             }
             return g;
-        }
-        else if (text.equals("listPorts")){
+        } else if (text.equals("listPorts")) {
             String g = "[CommandParser]\n";
-            for(String i:SerialPortList.getPortNames()){
-                g+=i+"\n";
+            for (String i : SerialPortList.getPortNames()) {
+                g += i + "\n";
             }
-            if(g.endsWith("]\n"))
-                g="[CommandParser] No ports found";
+            if (g.endsWith("]\n"))
+                g = "[CommandParser] No ports found";
             return g;
-        }
-        else if (text.startsWith("suffix")){
-            if(text.equals("suffix")) {
+        } else if (text.startsWith("suffix")) {
+            if (text.equals("suffix")) {
                 Handler.config.newLine = "";
                 Handler.config.isNewline = false;
                 return "[CommandParser] Cleared the suffix\n";
-            }
-            else if (text.split(" ").length >1){
-                if(text.split(" ")[1].equals("-1")){
+            } else if (text.split(" ").length > 1) {
+                if (text.split(" ")[1].equals("-1")) {
                     Handler.config.newLine = "\n";
                     Handler.config.isNewline = true;
                     return "[CommandParser] Changed the suffix to the newline character\n";
                 }
-                try{
+                try {
                     Handler.config.newLine = "";
-                    for(int i=1;i<text.split(" ").length;i++){
-                        Handler.config.newLine+=(char)Integer.parseInt(text.split(" ")[i]);
+                    for (int i = 1; i < text.split(" ").length; i++) {
+                        Handler.config.newLine += (char) Integer.parseInt(text.split(" ")[i]);
                     }
                     Handler.config.isNewline = false;
 
-                }catch (NumberFormatException e){
-                    return "[CommandParser] Wrong syntax, use *help\n";
+                } catch (NumberFormatException e) {
+                    return "[CommandParser] Wrong syntax, use" + cmd + "help\n";
                 }
                 return "[CommandParser] Set the suffix to " + Handler.config.newLine + "\n";
+            } else {
+                return "[CommandParser] Wrong syntax, use" + cmd + "help\n";
             }
-            else {
-                return "[CommandParser] Wrong syntax, use *help\n";
-            }
-        }
-        else if (text.equals("gets")){
-            return "[CommandParser] The suffix is " + Handler.config.newLine+"\n";
-        }
-        else if (text.equals("open")){
-            if (Handler.port !=null) return "[CommandParser] Port already opened. Use *close to close it\n";
+        } else if (text.equals("gets")) {
+            return "[CommandParser] The suffix is " + Handler.config.newLine + "\n";
+        } else if (text.equals("open")) {
+            if (Handler.port != null) return "[CommandParser] Port already opened. Use " + cmd + "close to close it\n";
             try {
                 Handler.port = new SerialPort(Handler.config.port);
                 Handler.port.openPort();
-                Handler.port.setParams(Handler.config.baud,Handler.config.data,Handler.config.stop,Handler.config.parity);
+                Handler.port.setParams(Handler.config.baud, Handler.config.data, Handler.config.stop, Handler.config.parity);
                 Handler.port.addEventListener(Handler.controller);
             } catch (SerialPortException e) {
                 e.printStackTrace();
             }
-            return "[CommandParser] Port Successfully opened on " + Handler.port.getPortName()+"\n";
-        }
-        else if (text.equals("config")){
+            return "[CommandParser] Port Successfully opened on " + Handler.port.getPortName() + "\n";
+        } else if (text.equals("config")) {
             Handler.stage.setScene(Handler.configScene);
             Handler.stage.setMinHeight(340);
             Handler.stage.setMinWidth(400);
@@ -134,27 +124,26 @@ public class CommandParser {
             Handler.stage.setWidth(400);
             Handler.configController.populateChoiceBoxes();
             return null;
-        }
-        else if(text.equals("close")){
+        } else if (text.equals("close")) {
             try {
                 Handler.port.closePort();
                 Handler.port = null;
                 return "[CommandParser] OK";
             } catch (SerialPortException e) {
                 e.printStackTrace();
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 return "[CommandParser] Port not opened yet\n";
-            } return "Could not close the port, probably busy :(";
+            }
+            return "Could not close the port, probably busy :(";
 
-        }
-        else if(text.equals("outfile")){
+        } else if (text.equals("outfile")) {
             FileChooser fc = new FileChooser();
             fc.setTitle("Choose file");
             fc.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("All files","*.*"));
+                    new FileChooser.ExtensionFilter("All files", "*.*"));
             Files.output = fc.showSaveDialog(new Stage());//Dont kill me
             FileWriter pw = null;
-            if(Files.output.exists()){
+            if (Files.output.exists()) {
 
                 try {
                     pw = new FileWriter(Files.output);
@@ -165,14 +154,12 @@ public class CommandParser {
                 }
             }
             return "";
-        }
-        else if(text.startsWith("theme")){
+        } else if (text.startsWith("theme")) {
             String[] data = text.split(" ");
-            if(data.length==1)return "[CommandParser] Invalid Syntax. Use *help\n";
+            if (data.length == 1) return "[CommandParser] Invalid Syntax. Use " + cmd + "help\n";
             Handler.config.theme = data[1];
-            if(Handler.updateTheme() != 0) return "[CommandParser] Could not find that theme\n";
-            return "[CommandParser] Set the theme to " + data[1]+'\n';
-        }
-        else return "[CommandParser] Invalid Command\n";
+            if (Handler.updateTheme() != 0) return "[CommandParser] Could not find that theme\n";
+            return "[CommandParser] Set the theme to " + data[1] + '\n';
+        } else return "[CommandParser] Invalid Command\n";
     }
 }

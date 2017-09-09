@@ -95,7 +95,7 @@ Copyright (C) 2017 MintSoup
    <bottom>
       <HBox spacing="8.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="input" onAction="#sendMain" prefHeight="25.0" prefWidth="535.0" promptText="*help for command help" styleClass="textfield" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="input" onAction="#sendMain" prefHeight="25.0" prefWidth="535.0" promptText="-help for command help" styleClass="textfield" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#sendMain" styleClass="normal" text="Send" />
          </children>
          <BorderPane.margin>

@@ -73,12 +73,12 @@ public class Controller implements SerialPortEventListener {
 
     public void execute(String text) {
         if (text.isEmpty()) return;
-        if (text.startsWith("*")) {
-            if (!text.equals("*config")) area.appendText(CommandParser.parse(text.substring(1, text.length())));
+        if (text.startsWith(CommandParser.cmd+"")) {
+            if (!text.equals(CommandParser.cmd+"config")) area.appendText(CommandParser.parse(text.substring(1, text.length())));
             else CommandParser.parse(text.substring(1, text.length()));
             return;
         } else if (Handler.port == null || !Handler.port.isOpened()) {
-            area.appendText("Port is not opened yet, use *help to get help on commands."+"\n");
+            area.appendText("Port is not opened yet, use "+CommandParser.cmd +"help to get help on commands."+"\n");
             return;
         }
         String newline = Handler.config.newLine.startsWith("|") ? Handler.config.newLine.substring(1) : Handler.config.newLine;
@@ -107,10 +107,12 @@ public class Controller implements SerialPortEventListener {
                 Field f = s.getDeclaredField("qs" + i);
                 TextField tf = (TextField) f.get(this);
                 tf.clear();
+
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
+
             }
 
         }
@@ -206,6 +208,7 @@ public class Controller implements SerialPortEventListener {
             } catch (SerialPortException e) {
                 e.printStackTrace();
             } catch (IOException e){
+                e.printStackTrace();
                 area.appendText("Could not write to file, output in stderr. Submit to dev (github.com/MintSoup/Serial) if you think this is a bug");
             }
         }
