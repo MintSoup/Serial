@@ -45,4 +45,9 @@ So now you kinda now how to use this program, but not really. I mean you can't e
  Running this command will open up a file chooser menu. Once you select your file, all the input from the serial port will be displayed on the output text area as well as be written to this file.
  
 <h4>-suffix</h4>
-This is used to configure a string which will be sent after you text every time you send something. use -suffix to clear 
+This is used to configure a string which will be sent after you text every time you send something. use -suffix to clear the suffix, or use -suffix -1 to set it to newline. Or to change the suffix to whatever you want, use -suffix followed by the ASCII codes of your characters, seperated by spaces. For example `-suffix 79 75` will change the suffix to OK.
+
+<h4>-theme</h4>
+Use this to change the theme. Running `-theme ~` will change the theme to the default super-duper awesome dark theme and running `-theme MODENA` whill change the theme to JavaFX's default MODENA theme which is OK but not great. Or if you want to use your custom themes type `-theme <ThemeName>`. All the theme files are located in .mintsoup/serial/ and have a .css format. If you have run the program once, you will even see the CSS of the default theme in a file called example-theme.css. You can use this to create your own theme by changing some values. Also, since this is standard JavaFX css, you can use other javafx properties. The css classes are named in a way so it will be easy to identify them (.button, .textarea, .textfield, .combo-box,etc). Once you're done creating your theme, save it under a different filename or save it under the default filename and then rename it. NEVER use the default example-theme.css filename because this is overwritten every time the program starts, so every time you use the program this file will get reset, meaning if you had a theme in there it would be gone. Don't want that
+
+Other than that the program is pretty easy to use. And by the way, if you really liked the program, please <a href="http://paypal.me/mintsoup">donate through paypal</a>
