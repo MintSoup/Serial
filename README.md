@@ -49,7 +49,7 @@ This is used to configure a string which will be sent after you text every time 
 
 <h4>-theme</h4>
 Use this to change the theme. Running <code>-theme ~</code> will change the theme to the default super-duper awesome dark theme and running <code>-theme MODENA</code> whill change the theme to JavaFX's default MODENA theme which is OK but not great. Or if you want to use your custom themes type <code>-theme <ThemeName></code>. All the theme files are located in ~/.mintsoup/serial/ and have a .css format. If you have run the program at least once, you will even see the CSS of the default theme in a file called example-theme.css in the home folder of this program (~/.mintsoup/serial). You can use this to create your own theme by changing some values. Also, since this is standard JavaFX css, you can use other javafx properties. The css classes are named in a way so it will be easy to identify them (<code>.button</code>, .<code>textarea</code>, <code>.textfield</code, etc). Once you're done creating your theme, save it under a different filename or save it under the default filename and then rename it. NEVER use the default example-theme.css filename because this is overwritten every time the program starts, so every time you use the program this file will get reset, meaning if you had a theme in there it would be gone. Don't want that.
-
+<p>
 All the other commands' help can be found in the the program itself and can be viewed by using the <code>-help</code> command.
-
+ </p>
 Other than that the program is pretty easy to use. And by the way, if you really liked the program, please consider<a href="http://paypal.me/mintsoup">donating through paypal</a>
