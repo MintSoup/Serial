@@ -18,5 +18,10 @@ Clone the repo, and then open a termial/shell/command prompt/call it whatever yo
 # Using
 <p>
 Ok, so lets have a look at the main screen<br>
-<img src=https://github.com/MintSoup/Serial/blob/master/main.PNG?raw=true>
+<img src=https://github.com/MintSoup/Serial/blob/master/main.PNG?raw=true><br>
+As you can see, we have 3 main areas: Quicksends area, Output area and input area.
+<br><p>
+<h3> Quicksends area</h3>
+This is very simple: As you can see we have 17 (I think too lazy to count) text fields and buttons next to each one of them. Typing
+anything in these text fields and pressing the send button next to it will have the same effect has copying the text in the textfield to the input area's textfield and then pressing the send button next to it. So essentially if there are some commands/strings that you send often you can keep them in these textfields for quick access. Note that these text fields are auto-saved when quitting the program so the next time you open it you'll have the same quicksends as the last time you used the program
 </p>
