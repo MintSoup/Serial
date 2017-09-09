@@ -25,3 +25,18 @@ As you can see, we have 3 main areas: Quicksends area, Output area and input are
 This is very simple: As you can see we have 17 (I think too lazy to count) text fields and buttons next to each one of them. Typing
 anything in these text fields and pressing the send button next to it will have the same effect has copying the text in the textfield to the input area's textfield and then pressing the send button next to it. So essentially if there are some commands/strings that you send often you can keep them in these textfields for quick access. Note that these text fields are auto-saved when quitting the program so the next time you open it you'll have the same quicksends as the last time you used the program
 </p>
+<p>
+<h3> Output area</h3>
+Really not much to it here. This is just a big old text area where all the input you get will be displayed.
+</p>
+<p>
+<h3>Input area</h3>
+Anything you type in here will be sent over the serial port when you press the send button or enter key. Simple.
+</p>
+So now you kinda now how to use this program, but not really. I mean you can't even open a connection. Which brings us to 
+
+# Commands
+<p> Commands are special strings that you type into the input field and send. Commands are used to configure the program or open/close ports, etc. Try typing -help in the input field and send it. You should be greeted by a text in your output field which contains a lot of useful information about commands. Most commands are self explanatory, but I will explain a few of them, just in case.
+ 
+ <h4>-config</h4>
+ If you type -config in the input field and press enter, you will be greeted by the configuration screen, where you can select all your serial settings (baudrate, data bits, etc). Once you're done configuring these, click the <font size=30px>GIGANTIC</font> OK button. If you can't find it you need to consult a doctor.
