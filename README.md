@@ -1,11 +1,11 @@
-# Serial
+# MintSoup's Serial program thingy
 A nice little serial communicator written in java
 <p>
 So probably you've seen many programs used for serial communication and they're great and all, but all (or most of them) have these common flaws:
 <br>Ugly UIs: All of the serial communication programs I know have REALLY ugly looking UIs
 <br>Windows only: Not cross platform, so if you're used to it/used it on a friends computer or something and you like it, or just aren't running windows, this can be frustrating
-<br>Sometimes hard to use: Some serial communicator programs just aren't really beginner friendly
-<br> and maybe some more I didn't mention
+<br>Sometimes hard to use: Some serial communicator programs just aren't really beginner friendly.
+<br>And maybe some other downfalls that can cause annoyance.
 </p>
 <p>So, in order to adress all of these issues, I created my own serial program! It's written in java so it's cross-platform, it comes with an AWESOME default dark theme, but you can change themes or even create your own!
 and, it's so easy to use my grandma could use it!!!!!(not really)<br>
