@@ -67,23 +67,23 @@ Copyright (C) 2017 Areg Hovhannisyan
             </VBox>
             <VBox prefHeight="553.0" prefWidth="44.0" spacing="8.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#s0" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s1" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s2" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s3" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s4" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s5" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s6" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s7" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s8" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s9" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s10" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s11" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s12" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s13" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s14" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s15" styleClass="normal" text="Send" />
-                  <Button mnemonicParsing="false" onAction="#s16" styleClass="normal" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s0" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s1" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s2" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s3" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s4" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s5" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s6" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s7" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s8" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s9" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s10" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s11" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s12" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s13" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s14" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s15" text="Send" />
+                  <Button mnemonicParsing="false" onAction="#s16" text="Send" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
