@@ -19,14 +19,13 @@ package me.mintsoup.serial;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
-import java.awt.*;
+import java.io.File;
 
 public class Main extends Application {
     //for testing purposes
@@ -68,6 +67,12 @@ public class Main extends Application {
             Handler.config.theme = "~";
             Handler.updateTheme();
         }
+        FileUtils.copyInputStreamToFile(
+                getClass().getResourceAsStream("/default.css")
+                ,new File(Files.home,"example-default.css"));
+        FileUtils.copyInputStreamToFile(
+                getClass().getResourceAsStream("/light.css")
+                ,new File(Files.home,"example-light.css"));
 
         if (test) System.err.println("!!!!!!!!!!TEST MODE IS ON!!!!!!!!!!");
     }

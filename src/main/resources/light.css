@@ -16,34 +16,34 @@
  *     along with MintSoup's Serial Communicator.  If not, see <http://www.gnu.org/licenses/>.
  */
 .root{
--fx-background-color:#636363;
+-fx-background-color:#D3D3D3;
 }
 .label{
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
 .combo-box{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
 .combo-box:pressed{
--fx-background-color:#383838;
+-fx-background-color:#D3D3D3;
 -fx-background-radius:0px;
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
 .combo-box .list-view{
 -fx-background-color:transparent;
 }
 .combo-box .list-view .scroll-bar{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
 }
 .combo-box .list-view .scroll-bar .thumb{
--fx-background-color:#383838;
+-fx-background-color:#D3D3D3;
 -fx-background-radius:50px;
 }
 .combo-box .list-view .scroll-bar .thumb:pressed{
--fx-background-color:#2F2F2F;
+-fx-background-color:#EAEAEA;
 }
 .combo-box .list-view .scroll-bar .increment-button:hover,
 .combo-box .list-view .scroll-bar .decrement-button:hover{
@@ -52,52 +52,53 @@
 
 
 .combo-box .list-cell{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
 .combo-box .list-cell:hover{
--fx-background-color: #343434;
+-fx-background-color: orange;
 }
 
-.normal{
--fx-background-color:#444444;
+.button{
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
 .textfield{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
-.normal:pressed{
--fx-background-color:#383838;
+.button:pressed{
+.button:pressed{
+-fx-background-color:#DEDEDE;
 
 }
 .textarea{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
 -fx-border-radius:0px;
--fx-text-fill: #2FD0E4;
+-fx-text-fill: black;
 }
 .textarea .content{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
 -fx-border-radius:0px;
 -fx-text-fill: #7759FF;
 }
 
 .textarea .scroll-bar{
--fx-background-color:#444444;
+-fx-background-color:#E1E1E1;
 -fx-background-radius:0px;
 }
 
 .textarea .scroll-bar .thumb{
--fx-background-color:#383838;
+-fx-background-color:#D3D3D3;
 -fx-background-radius:50px;
 }
 .textarea .scroll-bar .thumb:pressed{
--fx-background-color:#2F2F2F;
+-fx-background-color:#EAEAEA;
 }
 .textarea .increment-button:hover,
 .textarea .decrement-button:hover{
@@ -105,5 +106,5 @@
 }
 
 .corner{
--fx-background-color: #444444;
+-fx-background-color: #E1E1E1;
 }

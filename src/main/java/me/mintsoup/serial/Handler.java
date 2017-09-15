@@ -39,11 +39,15 @@ public class Handler {
 
     public static int updateTheme() {
 
-        if (config.theme.equals("~")) {
+        if (config.theme.equals("dark")) {
             clearThemes();
-            mainScene.getStylesheets().add(CommandParser.class.getResource("/style.css").toExternalForm());
-            configScene.getStylesheets().add(CommandParser.class.getResource("/style.css").toExternalForm());
-        } else if (config.theme.equals("MODENA")) {
+            mainScene.getStylesheets().add(CommandParser.class.getResource("/default.css").toExternalForm());
+            configScene.getStylesheets().add(CommandParser.class.getResource("/default.css").toExternalForm());
+        } else if(config.theme.equals("light")) {
+            clearThemes();
+            mainScene.getStylesheets().add(CommandParser.class.getResource("/light.css").toExternalForm());
+            configScene.getStylesheets().add(CommandParser.class.getResource("/light.css").toExternalForm());
+        }else if (config.theme.equals("MODENA")) {
             clearThemes();
             mainScene.getStylesheets().add("MODENA");
             configScene.getStylesheets().add("MODENA");

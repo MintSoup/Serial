@@ -33,6 +33,7 @@ import java.lang.invoke.SerializedLambda;
 public class CommandParser {
     public static final char cmd = '-';
     public static final String[] help = {
+            "open to open connection and -close to close it",
             "saveQS to force save quicksends",
             "reloadQS to reload quicksends",
             "reset to reset the entire program (quicksets, settings, etc) USE WITH CAUTION",
@@ -41,7 +42,7 @@ public class CommandParser {
             "suffix to clear the suffix string OR " + cmd + "suffix <ascii0> <ascii1>,etc to change it. Use" + cmd + "suffix -1 to change the suffix to \\n",
             "gets to get the suffix string",
             "outfile to choose an output file, all the input will be written in to this file.",
-            "theme <themeFile> to choose a theme. Theme files are located in ~/.mintsoup/serial/. All theme files should have a css format, example included\nUse " + cmd + "theme ~ to use the default theme",
+            "theme <themeFile> to choose a theme. Theme files are located in ~/.mintsoup/serial/. All theme files should have a css format, example included\nUse " + cmd + "theme ~ to use the default theme\nFor more information, visit the project's github repo (http://github.com/MintSoup/Serial)",
             "To send a string starting with " + cmd + ", use '|' before the string",};
 
 
