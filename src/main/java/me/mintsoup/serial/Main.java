@@ -50,7 +50,7 @@ public class Main extends Application {
         Handler.configController = l2.getController();
         Handler.controller = l.getController();
         //      primaryStage.setTitle("MintSoup's serial communicator" +(!test?"":" [TEST MODE]"));
-        primaryStage.setTitle("MintSoup's serial communicator [DEV]");
+        primaryStage.setTitle("MintSoup's serial communicator");
         primaryStage.setMinHeight(640);
         primaryStage.setMinWidth(720);
         Handler.mainScene = new Scene(root, 1000, 600);
