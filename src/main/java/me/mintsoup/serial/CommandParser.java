@@ -135,7 +135,7 @@ public class CommandParser {
             } catch (NullPointerException e) {
                 return "[CommandParser] Port not opened yet\n";
             }
-            return "Could not close the port, probably busy :(";
+            return "Could not close the port, probably busy :(\n";
 
         } else if (text.equals("outfile")) {
             FileChooser fc = new FileChooser();
