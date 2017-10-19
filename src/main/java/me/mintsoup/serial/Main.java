@@ -22,6 +22,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 
@@ -53,6 +54,7 @@ public class Main extends Application {
         primaryStage.setTitle("MintSoup's serial communicator");
         primaryStage.setMinHeight(640);
         primaryStage.setMinWidth(720);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
         Handler.mainScene = new Scene(root, 1000, 600);
         Handler.configScene = new Scene(config, 400, 620);
         primaryStage.setScene(Handler.mainScene);
