@@ -73,10 +73,21 @@
 -fx-background-radius:0px;
 -fx-text-fill: #2FD0E4;
 }
+.textfield:hover{
+-fx-background-color:#3A3A3A;
+}
+.textfield:focused{
+-fx-background-color:#2F2F2F;
+}
+.button:hover{
+-fx-background-color:#3A3A3A;
+
+}
 .button:pressed{
 -fx-background-color:#2F2F2F;
 
 }
+
 .textarea{
 -fx-background-color:#444444;
 -fx-background-radius:0px;

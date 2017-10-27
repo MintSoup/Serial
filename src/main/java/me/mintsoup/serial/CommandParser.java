@@ -114,7 +114,8 @@ public class CommandParser {
                 Handler.port.setParams(Handler.config.baud, Handler.config.data, Handler.config.stop, Handler.config.parity);
                 Handler.port.addEventListener(Handler.controller);
             } catch (SerialPortException e) {
-                e.printStackTrace();
+                Handler.port = null;
+                return "[CommandParser] Couldn't open the port\n";
             }
             return "[CommandParser] Port Successfully opened on " + Handler.port.getPortName() + "\n";
         } else if (text.equals("config")) {
