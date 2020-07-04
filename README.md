@@ -53,4 +53,4 @@ Also, <code>-theme light</code> will change  the theme to an included light them
 <p>
 All the other commands' help can be found in the the program itself and can be viewed by using the <code>-help</code> command.
  </p>
-Other than that the program is pretty easy to use. And by the way, if you really liked the program, please consider<a href="http://paypal.me/mintsoup">donating through paypal</a>
+Other than that the program is pretty easy to use.
